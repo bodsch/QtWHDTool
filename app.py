@@ -1,16 +1,14 @@
-# app.py
-import sys, asyncio
+import sys
+from pathlib import Path
 from PySide6.QtWidgets import QApplication
-# from qasync import QEventLoop
-from main_window import MainWindow
+from controller import MainController
 
 def main():
     app = QApplication(sys.argv)
-    app.setApplicationName("WHDLoad Download Tool")
-    app.setOrganizationName("WHDLoad")
-    win = MainWindow()
-    win.resize(1200, 700)
-    win.show()
+    ui_path = str(Path(__file__).parent / "ui" / "mainwindow.ui")
+    ctl = MainController(ui_path)
+    ctl.ui.resize(1280, 800)
+    ctl.ui.show()
     sys.exit(app.exec())
 
 if __name__ == "__main__":
